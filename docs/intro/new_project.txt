@@ -1,0 +1,119 @@
+==================
+Creating a project
+==================
+
+Create a new directory. 
+
+Go into the directory and run from command line:
+
+.. code-block:: console
+
+    $ jam-project.py
+
+
+The following files and folders will be created in the directory::
+
+    /
+        css/
+        js/
+        img/
+        reports/
+        static/
+        admin.sqlite
+        server.py
+        index.html
+        wsgi.py
+
+
+To start Jam.py web server run **server.py** script.
+
+
+.. code-block:: console
+
+    $ ./server.py
+
+
+.. note::
+    You can specify a port as parameter, for example 
+    
+    .. code-block:: console
+    
+        $ ./server.py 8081. 
+        
+    By default, the port is 8080. If you will specify another port, you need to 
+    use it in a browser in the next steps.
+
+
+Open a Web browser and go to “/builder.html” on your local domain – e.g., 
+http://127.0.0.1:8080/builder.html. You should see the select language dialog. 
+
+
+.. code-block:: console
+
+    127.0.0.1:8080/builder.html
+    
+    
+In the dialog that will appear, select the language and press OK button.
+
+.. image:: _images/lang.png
+	:alt: Jam.py language dialog
+
+In the New project dialog box fill in:
+
+* **Caption** - the project name that appears to users
+* **Name** - name of project (task) that will be used in programming code to 
+  get access to the task object. Should be a short valid python identifier.
+  This name is used as a prefix when creating a table in the project database.
+* **DB type** — select database type. If database is not Sqlite, it must be 
+  created in advance and its attributes should be entered in the 
+  corresponding form fields. 
+  To see examples of Database setup, follow the :doc:`link </admin/project/database>`.
+
+.. image:: _images/project_params.png
+	:align: center
+	:alt: New project setup
+
+When you press OK, the connection to the database will be checked, and in case 
+of failure 	an error message will be displayed.
+
+.. note::
+
+    Please note the following requirements:
+    
+    * to use **FireBird** database, the python ``fdb`` library must be installed 
+    * **PostgreSQL** requires ``psycopg2`` library 
+    * **MySQL** requires ``MySQLdb`` library
+    * **Oracle** requires ``cx_Oracle`` library     
+    * **MSSQL** requires ``pymssql`` library
+    * to generate reports **LibreOffice** must be installed
+    
+.. note::
+
+    For **SQLite** database, when an item field is deleted or renamed, or foreign 
+    key is created, 
+    :doc:`Application builder </admin/index>`,
+    creates a new table and copies records from the old one into it.
+    
+    For **SQLite** database, Jam.py doesn’t support importing of metadata into an 
+    existing project (project with tables in the database). 
+    You can only import metadata into a new project.
+
+If all goes well, a new project will be created and the project tree will appear 
+in the Application builder.    
+
+
+.. image:: _images/adm_new_project.png
+	:align: center
+	:alt: Jam.py Application builder
+
+Now, to see the project itself, create a new page in the browser and type in the 
+address bar:
+
+.. code-block:: console
+
+    127.0.0.1:8080
+
+
+.. image:: _images/empty_project.png
+	:align: center
+	:alt: Jam.py project
