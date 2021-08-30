@@ -264,4 +264,29 @@ function Events1() { // StatVaccCOV19
 
 task.events.events1 = new Events1();
 
+function Events6() { // StatVaccCOV19.catalogs.stat 
+
+	function calc(item){
+		//item.total_vacc.value=item.F.value + item.M.value;
+		
+		item.M.value=item.Sup_18_Inf_40_M.value + item.Sup_41_Inf_64_M.value + item.Sup_65_M.value ;
+		
+		item.F.value=item.Sup_18_Inf_40_F.value + item.Sup_41_Inf_64_F.value + item.Sup_65_F.value ;
+		
+		item.total_vacc.value=item.F.value + item.M.value;
+		
+	}
+	
+	function on_field_changed(field){
+		var item=field.owner;
+		calc(item)
+		
+		
+	}
+	this.calc = calc;
+	this.on_field_changed = on_field_changed;
+}
+
+task.events.events6 = new Events6();
+
 })(jQuery, task)
