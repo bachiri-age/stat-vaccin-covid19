@@ -275,6 +275,10 @@ function Events6() { // StatVaccCOV19.catalogs.stat
 		
 		item.total_vacc.value=item.F.value + item.M.value;
 		
+		///////////////////////////////////////////////////////
+		
+		item.total.value=item.autre_Vac.value + item.maladie_chronique.value + item.sante.value ;
+		
 	}
 	
 	function on_field_changed(field){
