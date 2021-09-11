@@ -293,4 +293,19 @@ function Events6() { // StatVaccCOV19.catalogs.stat
 
 task.events.events6 = new Events6();
 
+function Events12() { // StatVaccCOV19.authentication.users 
+
+	function on_field_get_text(field) {
+		var item = field.owner;
+		if (field.field_name === 'password') {
+			if (item.id.value || field.value) {
+				return '**********';
+			}
+		}
+	}
+	this.on_field_get_text = on_field_get_text;
+}
+
+task.events.events12 = new Events12();
+
 })(jQuery, task)
